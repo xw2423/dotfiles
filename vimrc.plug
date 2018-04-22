@@ -150,7 +150,7 @@ let g:solarized_termtrans=1
 let g:solarized_termcolors=256
 let g:solarized_contrast="high"
 let g:solarized_visibility="high"
-silent color solarized
+silent! color solarized
 
 " php-cs-fixer
 " options: --rules (default:@PSR2)
