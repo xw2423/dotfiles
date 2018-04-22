@@ -1,0 +1,190 @@
+"======================================================
+" vim-plug init
+"======================================================
+call plug#begin('~/.dotfiles/plugged')
+Plug 'junegunn/vim-plug'
+
+" Code Completions
+
+" Fast navigation
+Plug 'Lokaltog/vim-easymotion'
+Plug 'vim-scripts/matchit.zip'
+
+" Fast editing
+"Plug 'SirVer/ultisnips' | Plug 'honza/vim-snippets' | Plug 'epilande/vim-es2015-snippets'
+Plug 'godlygeek/tabular'
+Plug 'Raimondi/delimitMate'
+Plug 'mattn/emmet-vim'
+"Plug 'terryma/vim-multiple-cursors'
+Plug 'tpope/vim-surround'
+Plug 'scrooloose/nerdcommenter'
+"sort in visual model:gs
+Plug 'christoomey/vim-sort-motion'
+
+" IDE features
+Plug 'scrooloose/nerdtree', {'on': 'NERDTreeToggle'}
+" Plug 'humiaozuzu/TabBar'
+Plug 'majutsushi/tagbar'
+Plug 'rking/ag.vim'
+Plug 'kien/ctrlp.vim'
+Plug 'tpope/vim-fugitive'
+"Plug 'w0rp/ale'
+Plug 'scrooloose/syntastic'
+" Plug 'bronson/vim-trailing-whitespace'
+Plug 'moll/vim-bbye'
+Plug 'vim-scripts/BufOnly.vim'
+
+" UI
+Plug 'itchyny/lightline.vim'
+Plug 'airblade/vim-gitgutter'
+Plug 'altercation/vim-colors-solarized'
+
+" PHP
+Plug '2072/PHP-Indenting-for-VIm', {'for': 'php'}
+Plug 'xw2423/vim-php-cs-fixer', {'for': 'php'}
+Plug 'alvan/vim-php-manual', {'for': 'php'}
+
+" Web Frontend
+Plug 'othree/html5.vim'
+Plug 'lepture/vim-jinja'
+Plug 'gorodinskiy/vim-coloresque'
+Plug 'pangloss/vim-javascript'
+" Plug 'marijnh/tern_for_vim', {'do': 'npm install'}
+Plug 'othree/javascript-libraries-syntax.vim'
+Plug 'heavenshell/vim-jsdoc', {'for': ['javascript', 'jsx', 'typescript']}
+Plug 'burnettk/vim-angular'
+Plug 'mxw/vim-jsx'
+Plug 'nono/jquery.vim'
+Plug 'Chiel92/vim-autoformat', {'on': 'Autoformat'}
+Plug 'cakebaker/scss-syntax.vim'
+Plug 'JulesWang/css.vim'
+Plug 'tpope/vim-markdown'
+
+" nginx
+Plug 'chr4/nginx.vim'
+
+" Load local plugins
+if filereadable(expand("~/.dotfiles/vimrc.plug.local"))
+  source ~/.dotfiles/vimrc.plug.local
+endif
+call plug#end()
+
+"======================================================
+" custom configure
+"======================================================
+" vim-easymotion
+let g:EasyMotion_leader_key = '<space>'
+
+" tabular:text-align
+nmap <leader>a= :Tabularize /=<CR>
+vmap <leader>a= :Tabularize /=<CR>
+nmap <leader>a: :Tabularize /:<CR>
+vmap <leader>a: :Tabularize /:<CR>
+nmap <leader>a" :Tabularize /"<CR>
+vmap <leader>a" :Tabularize /"<CR>
+
+" nerdcommenter
+let NERDSpaceDelims=1
+let NERDCompactSexyComs=1
+
+" vim-sort-motion case insensitive
+let g:sort_motion_flags = "i"
+
+" nerdtree
+nmap <F4> :NERDTreeToggle<cr>
+noremap <C-e> :NERDTreeToggle<CR>:NERDTreeMirror<CR>
+inoremap <C-e> <ESC>:NERDTreeToggle<CR>:NERDTreeMirror<CR>
+let NERDTreeWinSize=30
+let NERDTreeChDirMode=2
+let NERDTreeIgnore=['\.pyc', '\.pyo$', '\.obj$', '\.o$', '\.so$', '\~$', '\.swo$', '\.swp$', '\.git', '\.hg', '\.svn', '\.bzr']
+let NERDTreeShowHidden=1
+let NERDTreeQuitOnOpen=1
+let NERDTreeWinPos = "left"
+"close vim if the only window left open is a NERDTree
+autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | end
+
+" tagbar
+nmap <F5> :TagbarToggle<cr>
+let g:tagbar_left=0
+let g:tagbar_width=30
+let g:tagbar_autofocus = 1
+let g:tagbar_sort = 0
+let g:tagbar_compact = 1
+" javascript support: npm install -g git+https://github.com/ramitos/jsctags.git
+let g:tagbar_type_javascript = {
+    \ 'ctagsbin' : 'jsctags'
+    \ }
+
+" ctrlp
+nnoremap <leader>m :CtrlPMRU<CR>
+nnoremap <leader>b :CtrlPBuffer<CR>
+let g:ctrlp_custom_ignore = {
+    \ 'dir':  '\v[\/](node_modules|target|dist)|\.(git|hg|svn|rvm)$',
+    \ 'file': '\v\.(exe|so|dll|zip|tar|tar.gz)$',
+    \ }
+let g:ctrlp_follow_symlinks = 1
+let g:ctrlp_mruf_relative = 1
+let g:ctrlp_mruf_exclude = '/tmp/.*\|/temp/.*'
+
+" ag
+nnoremap <leader>ag :Ag<space>
+
+" vim-bbye
+nnoremap <leader>qq :Bdelete<cr>
+
+" BufOnly.vim
+nnoremap <silent> <leader>qo :BufOnly<CR>
+
+" lightline
+let g:lightline = {
+    \ 'active': {
+    \   'left': [ [ 'mode', 'paste' ],
+    \             [ 'gitbranch', 'readonly', 'filename', 'modified' ] ]
+    \ },
+    \ 'component_function': {'gitbranch': 'fugitive#head'},
+    \ 'tabline': {'left': [ [ 'tabs' ] ]}
+    \ }
+
+" color solarized
+let g:solarized_termtrans=1
+let g:solarized_termcolors=256
+let g:solarized_contrast="high"
+let g:solarized_visibility="high"
+silent color solarized
+
+" php-cs-fixer
+" options: --rules (default:@PSR2)
+let g:php_cs_fixer_rules = "@PSR2,binary_operator_spaces,no_whitespace_before_comma_in_array,whitespace_after_comma_in_array,ternary_operator_spaces"
+" options: --cache-file
+" let g:php_cs_fixer_cache = ".php_cs.cache"
+" options: --config
+" let g:php_cs_fixer_config_file = '.php_cs'
+let g:php_cs_fixer_php_path = "php"
+let g:php_cs_fixer_enable_default_mapping = 1
+let g:php_cs_fixer_dry_run = 0
+let g:php_cs_fixer_verbose = 0
+let g:php_cs_fixer_silent = 1
+au BufWritePost *.php :call PhpCsFixerFixFile()
+au BufWritePost *.php setfiletype php
+
+" vim-markdown
+let g:vim_markdown_folding_disabled=1
+let g:vim_markdown_no_default_key_mappings=1
+let g:vim_markdown_frontmatter=1
+let g:import_sort_auto = 1
+
+" vim-jsx
+let g:jsx_ext_required = 0 " Allow JSX in normal JS files"
+
+" vim-jsdoc
+let g:jsdoc_default_mapping = 0
+autocmd FileType javascript,typescript nnoremap <leader><leader>d :JsDoc<CR>
+
+" tern_for_vim
+let tern_show_signature_in_pum = 1
+let tern_show_argument_hints = 'on_hold'
+autocmd FileType javascript nnoremap <leader>d :TernDef<CR>
+autocmd FileType javascript setlocal omnifunc=tern#Complete
+
+" vim-autoformat,require: npm install -g js-beautify
+autocmd FileType javascript,json,html,css,scss noremap <buffer>  <leader><leader>f :Autoformat<cr>

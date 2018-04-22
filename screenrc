@@ -1,0 +1,44 @@
+escape ^Oo
+attrcolor b ".I"
+termcapinfo xterm 'Co#256:AB=\E[48;5;%dm:AF=\E[38;5;%dm'
+
+encoding GBK UTF-8
+vbell on
+autodetach on
+startup_message off
+# make the shell in every window a login shell
+shell -$SHELL
+defscrollback 5000
+
+#remove some stupid / dangerous key bindings
+bind k
+bind ^k
+bind .
+bind ^\
+bind \\
+bind ^h
+bind h
+
+# bind <F7> to move to previous window
+# bind <F8> to move to next window
+# bind <F9> to create a new screen
+# bind <F10> to kill current session
+# bind <F11> to rename an existing window
+# bind <F12> to detach screen from this terminal
+bindkey -k k7 prev
+bindkey -k k8 next
+bindkey -k k9 screen
+bindkey -k k; kill
+bindkey -k F1 title
+bindkey -k F2 detach
+
+bind ` select 0
+bind 0 select 10
+
+# default windows
+screen -t bash1 0
+screen -t bash2 1
+screen -t bash3 2
+select 0
+
+hardstatus alwayslastline '%{gk}%-w%{.gk}%n %t%{-}%+Lw %=%{kG}%m-%d %c'

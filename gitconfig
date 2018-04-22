@@ -1,0 +1,26 @@
+[alias]
+    ci = commit
+    st = status
+    co = checkout
+    lg = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%ci) %C(bold blue)<%an>%Creset' --abbrev-commit
+[user]
+    name = xw2423
+    email = xw2423@sina.com
+[core]
+    editor = vim
+    excludesfile = ~/.vim/gitignore_global
+[color]
+    ui = true
+[merge]
+    tool = vim-diff
+[mergetool "vim-diff"]
+    cmd = "vim \"$PWD/$MERGED\" \
+            +\":split $PWD/$REMOTE\" +\":set buftype=nowrite\" \
+            +\":wincmd K\" \
+            +\":vertical diffsplit $PWD/$LOCAL\" +\":set buftype=nowrite\" \
+#            +\":vertical diffsplit $PWD/$BASE\" +\":set buftype=nowrite\" \
+            "
+[http]
+    sslVerify = false
+[log]
+    date = local
