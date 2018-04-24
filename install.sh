@@ -69,9 +69,7 @@ success "Successfully created symbol links"
 # install vim-plug
 if [ ! -e $PRO_PATH/autoload/plug.vim ]; then
     info "Installing Vim-Plug"
-    git clone https://github.com/junegunn/vim-plug.git $PRO_PATH/plugged/vim-plug
-    mkdir -p "$PRO_PATH/autoload"
-    lnif $PRO_PATH/plugged/vim-plug/plug.vim $PRO_PATH/autoload/plug.vim
+    curl -fLo "$PRO_PATH/autoload/plug.vim" --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
     success "Successfully installed vim-plug"
 fi
 
