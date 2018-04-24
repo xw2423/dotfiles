@@ -42,7 +42,7 @@ done
 if [ ! -e "$PRO_PATH" ]; then
     info "clone $PRO_NAME to $PRO_PATH"
     mkdir -p "$PRO_PATH"
-    git clone "$REPO_URI" "$PRO_PATH"
+    git clone -c http.sslversion=tlsv1 "$REPO_URI" "$PRO_PATH"
     ret="$?"
     success "Successfully cloned $PRO_NAME"
 else

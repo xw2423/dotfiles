@@ -22,5 +22,6 @@
             "
 [http]
     sslVerify = false
+    sslversion=tlsv1
 [log]
     date = local
