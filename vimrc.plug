@@ -2,7 +2,6 @@
 " vim-plug init
 "======================================================
 call plug#begin('~/.dotfiles/plugged')
-Plug 'junegunn/vim-plug'
 
 " Code Completions
 Plug 'Shougo/deoplete.nvim'
