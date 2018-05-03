@@ -4,13 +4,15 @@
 call plug#begin('~/.dotfiles/plugged')
 
 " Code Completions
-Plug 'Shougo/deoplete.nvim'
-Plug 'roxma/nvim-yarp'
-Plug 'roxma/vim-hug-neovim-rpc'
-Plug 'Shougo/neco-syntax'
+" Plug 'Shougo/deoplete.nvim'
+" Plug 'roxma/nvim-yarp'
+" Plug 'roxma/vim-hug-neovim-rpc'
+" Plug 'Shougo/neco-syntax'
+" Plug 'lvht/phpcd.vim', { 'for': 'php', 'do': 'composer install' }
+Plug 'Shougo/neocomplcache'
+Plug 'ervandew/supertab'
 " Plug 'SirVer/ultisnips'
 " Plug 'honza/vim-snippets'
-" Plug 'lvht/phpcd.vim', { 'for': 'php', 'do': 'composer install' }
 
 " Fast navigation
 Plug 'Lokaltog/vim-easymotion'
@@ -79,27 +81,39 @@ call plug#end()
 " custom configure
 "======================================================
 " deoplete
-let g:deoplete#enable_at_startup = 1
-inoremap <silent><expr> <TAB>
-    \ pumvisible() ? "\<C-n>" :
-    \ <SID>check_back_space() ? "\<TAB>" :
-    \ deoplete#mappings#manual_complete()
-function! s:check_back_space() abort "{{{
-    let col = col('.') - 1
-    return !col || getline('.')[col - 1]  =~ '\s'
-endfunction"}}}
+" let g:deoplete#enable_at_startup = 1
+" inoremap <silent><expr> <TAB>
+    " \ pumvisible() ? "\<C-n>" :
+    " \ <SID>check_back_space() ? "\<TAB>" :
+    " \ deoplete#mappings#manual_complete()
+" function! s:check_back_space() abort "{{{
+    " let col = col('.') - 1
+    " return !col || getline('.')[col - 1]  =~ '\s'
+" endfunction"}}}
 
 " neco-syntax syntax_lines may very very long
-let g:necosyntax#max_syntax_lines = 3000
+" let g:necosyntax#max_syntax_lines = 3000
+
+" phpcd.vim
+" let g:deoplete#ignore_sources = get(g:, 'deoplete#ignore_sources', {})
+" let g:deoplete#ignore_sources.php = ['omni']
+
+" NeoComplCache
+let g:neocomplcache_enable_at_startup=1
+let g:neoComplcache_disable_auto_complete=1
+let g:neocomplcache_enable_smart_case=1
+let g:neocomplcache_min_syntax_length = 3
+let g:neocomplcache_lock_buffer_name_pattern = '\*ku\*'
+set completeopt-=preview
+
+" SuperTab
+let g:SuperTabDefaultCompletionType = '<C-X><C-U>'
+let g:SuperTabRetainCompletionType=2
 
 " ultisnips
 " let g:UltiSnipsExpandTrigger="<c-k>"
 " let g:UltiSnipsJumpForwardTrigger="<c-f>"
 " let g:UltiSnipsJumpBackwardTrigger="<c-b>"
-"
-" phpcd.vim
-" let g:deoplete#ignore_sources = get(g:, 'deoplete#ignore_sources', {})
-" let g:deoplete#ignore_sources.php = ['omni']
 
 " vim-easymotion
 let g:EasyMotion_leader_key = '<space>'
