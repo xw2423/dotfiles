@@ -1,7 +1,7 @@
 "======================================================
 " vim-plug init
 "======================================================
-call plug#begin('~/.dotfiles/plugged')
+silent call plug#begin($VIMROOT.'/plugged')
 
 " Code Completions
 " Plug 'Shougo/deoplete.nvim'
@@ -44,7 +44,9 @@ Plug 'vim-scripts/BufOnly.vim'
 
 " UI
 Plug 'itchyny/lightline.vim'
+if !g:isgvim
 Plug 'airblade/vim-gitgutter'
+endif
 Plug 'altercation/vim-colors-solarized'
 
 " PHP
@@ -72,8 +74,8 @@ Plug 'tpope/vim-markdown'
 Plug 'chr4/nginx.vim'
 
 " Load local plugins
-if filereadable(expand("~/.dotfiles/vimrc.plug.local"))
-  source ~/.dotfiles/vimrc.plug.local
+if filereadable($VIMROOT.'/vimrc.plug.local')
+  source $VIMROOT/vimrc.plug.local
 endif
 call plug#end()
 

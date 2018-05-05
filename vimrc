@@ -1,10 +1,23 @@
 let mapleader = ','
 let g:mapleader = ','
+let g:isgvim = has('win32') && has('gui_win32') && has('gui_running')
+
+" vim root
+if g:isgvim
+    let $VIMROOT=$HOME.'/_dotfiles'
+    source $VIMROOT/autoload/plug.vim
+else
+    let $VIMROOT=$HOME.'/.dotfiles'
+endif
 
 "load plugins
-if filereadable(expand("~/.dotfiles/vimrc.plug"))
-  source ~/.dotfiles/vimrc.plug
+if filereadable($VIMROOT.'/vimrc.plug')
+    source $VIMROOT/vimrc.plug
 endif
+
+" if filereadable($HOME .'/'.g:vimroot.'/vimrc.plug')
+    " exec 'source ' . $HOME . '/' . g:vimroot .'/vimrc.plug'
+" endif
 
 "======================================================
 " Base Configure
