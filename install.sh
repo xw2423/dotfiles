@@ -1,7 +1,7 @@
 #!/bin/bash
 PRO_NAME='dotfiles'
 REQUIRE="git"
-SYMLINKS="vimrc screenrc gitconfig"
+SYMLINKS="vimrc screenrc gitconfig bash_profile wgetrc curlrc"
 [ -z "$PRO_PATH" ] && PRO_PATH="$HOME/.$PRO_NAME"
 [ -z "$REPO_URI" ] && REPO_URI='https://github.com/xw2423/dotfiles.git'
 
@@ -52,11 +52,11 @@ else
     success "Successfully updated $PRO_NAME"
 fi
 
-info "backing up current vim config"
-today=`date +%Y%m%d`
-for i in $HOME/.vim $HOME/.vimrc; do [ -e $i ] && [ ! -L $i ] && mv $i $i.$today; done
-for i in $HOME/.vim $HOME/.vimrc; do [ -L $i ] && unlink $i ; done
-success "Successfully backed up your vim configuration"
+#info "backing up current vim config"
+#today=`date +%Y%m%d`
+#for i in $HOME/.vim $HOME/.vimrc; do [ -e $i ] && [ ! -L $i ] && mv $i $i.$today; done
+#for i in $HOME/.vim $HOME/.vimrc; do [ -L $i ] && unlink $i ; done
+#success "Successfully backed up your vim configuration"
 
 info "setting up symlinks"
 lnif $PRO_PATH/ $HOME/.vim
@@ -66,6 +66,7 @@ do
 done
 success "Successfully created symbol links"
 
+[ ! -z $1 ] && exit
 # install vim-plug
 if [ ! -e $PRO_PATH/autoload/plug.vim ]; then
     info "Installing Vim-Plug"
