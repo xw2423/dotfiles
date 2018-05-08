@@ -36,9 +36,12 @@ bind ` select 0
 bind 0 select 10
 
 # default windows
-screen -t bash1 0
-screen -t bash2 1
-screen -t bash3 2
+screen -t bash 0
+screen -t v587 1
+screen -t enterprise 2
+screen -t oss 3
+screen -t erp 4
+screen -t bash 5
 select 0
 
 hardstatus alwayslastline '%{gk}%-w%{.gk}%n %t%{-}%+Lw %=%{kG}%m-%d %c'

@@ -51,23 +51,23 @@ Plug 'altercation/vim-colors-solarized'
 
 " PHP
 Plug '2072/PHP-Indenting-for-VIm', {'for': 'php'}
-Plug 'xw2423/vim-php-cs-fixer', {'for': 'php'}
+Plug 'stephpy/vim-php-cs-fixer', {'for': 'php'}
 Plug 'alvan/vim-php-manual', {'for': 'php'}
 
 " Web Frontend
 Plug 'othree/html5.vim'
 Plug 'lepture/vim-jinja'
-Plug 'gorodinskiy/vim-coloresque'
-Plug 'pangloss/vim-javascript'
+Plug 'systemmonkey42/vim-coloresque', {'for': ['css', 'html', 'less', 'scss', 'sh', 'vim']}
+Plug 'pangloss/vim-javascript', {'for': ['javascript', 'jsx', 'typescript']}
 " Plug 'marijnh/tern_for_vim', {'do': 'npm install'}
 Plug 'othree/javascript-libraries-syntax.vim'
 Plug 'heavenshell/vim-jsdoc', {'for': ['javascript', 'jsx', 'typescript']}
-Plug 'burnettk/vim-angular'
-Plug 'mxw/vim-jsx'
-Plug 'nono/jquery.vim'
+Plug 'burnettk/vim-angular', {'for': ['javascript']}
+Plug 'mxw/vim-jsx', {'for': ['jsx']}
+Plug 'nono/jquery.vim', {'for': ['javascript']}
 Plug 'Chiel92/vim-autoformat', {'on': 'Autoformat'}
-Plug 'cakebaker/scss-syntax.vim'
-Plug 'JulesWang/css.vim'
+Plug 'cakebaker/scss-syntax.vim', {'for': ['scss']}
+Plug 'JulesWang/css.vim', {'for': ['scss', 'css', 'less']}
 Plug 'tpope/vim-markdown'
 
 " nginx
@@ -208,9 +208,7 @@ let g:php_cs_fixer_php_path = "php"
 let g:php_cs_fixer_enable_default_mapping = 1
 let g:php_cs_fixer_dry_run = 0
 let g:php_cs_fixer_verbose = 0
-let g:php_cs_fixer_silent = 1
-au BufWritePost *.php :call PhpCsFixerFixFile()
-au BufWritePost *.php setfiletype php
+au BufWritePost *.php silent! :call PhpCsFixerFixFile()
 
 " vim-markdown
 let g:vim_markdown_folding_disabled=1
