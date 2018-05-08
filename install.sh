@@ -64,6 +64,9 @@ for i in $SYMLINKS
 do
     lnif $HOME/.vim/$i $HOME/.$i
 done
+if [[ $OSTYPE =~ "cygwin" ]]; then
+    lnif $HOME/.vim/minttyrc $HOME/.minttyrc
+fi
 success "Successfully created symbol links"
 
 [ ! -z $1 ] && exit
