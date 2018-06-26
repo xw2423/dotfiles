@@ -74,7 +74,7 @@ set splitbelow
 set novisualbell noerrorbells                                     " don't beep
 set nostartofline                                                 " keep cursor postion when switching between buffers
 set wildmode=longest:full,full
-set pastetoggle=<F11>
+set pastetoggle=<F2>
 
 " folder
 set foldenable        " code folding
