@@ -103,6 +103,8 @@ let g:html_indent_script1 = "inc"
 let g:html_indent_style1 = "inc"
 " vue
 au BufRead,BufNewFile *.vue set filetype=html
+" set php iskeyword
+autocmd FileType php setlocal isk-=-
 
 "ctags
 set tags=./tags;/,~/.vimtags
