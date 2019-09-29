@@ -19,7 +19,7 @@ prompt_git() {
 	if [ $(git rev-parse --is-inside-work-tree &>/dev/null; echo "${?}") == '0' ]; then
 
 		# check if the current directory is in .git before running git checks
-		if [ "$(git rev-parse --is-inside-git-dir 2> /dev/null)" == 'false' ]; then
+		if [[ ! $OS =~ "indows" ]] && [ "$(git rev-parse --is-inside-git-dir 2> /dev/null)" == 'false' ]; then
 
 			# Ensure the index is up to date.
 			git update-index --really-refresh -q &>/dev/null;
@@ -61,7 +61,7 @@ prompt_git() {
 	fi;
 }
 
-if tput setaf 1 &> /dev/null; then
+if [[ ! $OS =~ "indows" ]] && tput setaf 1 &> /dev/null; then
 	tput sgr0; # reset colors
 	bold=$(tput bold);
 	reset=$(tput sgr0);
@@ -76,6 +76,19 @@ if tput setaf 1 &> /dev/null; then
 	violet=$(tput setaf 61);
 	white=$(tput setaf 15);
 	yellow=$(tput setaf 136);
+elif [[ $TERM =~ "256color" ]];then
+	bold='';
+	reset="\e[0m";
+	black="\e[1;38;5;0m";
+	blue="\e[1;38;5;33m";
+	cyan="\e[1;38;5;37m";
+	green="\e[1;38;5;64m";
+	orange="\e[1;38;5;166m";
+	purple="\e[1;38;5;125m";
+	red="\e[1;38;5;124m";
+	violet="\e[1;38;5;61m";
+	white="\e[1;38;5;15m";
+	yellow="\e[1;38;5;136m";
 else
 	bold='';
 	reset="\e[0m";
