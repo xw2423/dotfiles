@@ -103,8 +103,8 @@ let g:html_indent_script1 = "inc"
 let g:html_indent_style1 = "inc"
 " vue
 au BufRead,BufNewFile *.vue set filetype=html
-" set php iskeyword
-autocmd FileType php setlocal isk-=-
+" reset php iskeyword
+au FileType php setlocal isk=@,48-57,_,127-255
 " conf
 if !did_filetype()
     au BufNewFile,BufRead *.conf set ft=conf
