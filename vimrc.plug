@@ -199,7 +199,7 @@ silent! color solarized
 
 " php-cs-fixer
 " options: --rules (default:@PSR2)
-let g:php_cs_fixer_rules = '{"@Symfony":true,"concat_space":{"spacing":"one"},"phpdoc_summary":false}'
+let g:php_cs_fixer_rules = '{"@Symfony":true,"concat_space":{"spacing":"one"},"phpdoc_summary":false,"no_superfluous_phpdoc_tags":false}'
 " options: --cache-file
 " let g:php_cs_fixer_cache = ".php_cs.cache"
 " options: --config
