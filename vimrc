@@ -95,14 +95,10 @@ set shiftwidth=4    " indent width
 set expandtab       " expand tab to space
 autocmd FileType html,xhtml,javascript,sass,scss,css,json,xml setlocal tabstop=2 shiftwidth=2 softtabstop=2
 
-" syntax support
-autocmd Syntax javascript set syntax=jquery   " JQuery syntax support
 " js
 let g:html_indent_inctags = "html,body,head,tbody"
 let g:html_indent_script1 = "inc"
 let g:html_indent_style1 = "inc"
-" vue
-au BufRead,BufNewFile *.vue set filetype=html
 " reset php iskeyword
 au FileType php setlocal isk=@,48-57,_,127-255
 " conf
