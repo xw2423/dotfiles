@@ -53,3 +53,5 @@ alias path='echo -e ${PATH//:/\\n}'
 
 alias less='less -r'
 alias vi='vim';
+
+# vim: ft=sh

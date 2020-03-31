@@ -41,7 +41,7 @@
             "
 [http]
     sslVerify = false
-    sslversion=tlsv1
+    sslversion = tlsv1
 
 [log]
     date = local
@@ -67,3 +67,5 @@
     added = green
     changed = red
     untracked = cyan
+
+# vim: ft=gitconfig
