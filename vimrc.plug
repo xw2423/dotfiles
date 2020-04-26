@@ -61,7 +61,7 @@ Plug 'othree/html5.vim', {'for': ['html']}
 Plug 'othree/yajs.vim', {'for': ['javascript', 'jsx', 'typescript']}
 Plug 'othree/javascript-libraries-syntax.vim', {'for': ['javascript', 'jsx', 'typescript']}
 " css syntax
-Plug 'gko/vim-coloresque', {'for': ['css', 'less', 'scss', 'vim']}
+Plug 'ap/vim-css-color', {'for': ['css', 'less', 'scss', 'vim']}
 
 " js edit
 Plug 'ternjs/tern_for_vim', {'do': 'npm install', 'for': ['javascript','html']}
