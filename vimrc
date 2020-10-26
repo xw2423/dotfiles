@@ -202,7 +202,7 @@ noremap <tab> :tabn<CR>
 noremap <s-tab> :tabp<CR>
 " record current tab no to return prev tab when closed
 au TabLeave * let g:prev_tab_no=tabpagenr()-1
-noremap <leader>g :tabc<CR>:exec g:prev_tab_no"tabn"<CR>
+noremap <leader>z :tabc<CR>:exec g:prev_tab_no"tabn"<CR>
 
 " Visual mode pressing * or # searches for the current selection
 vnoremap <silent> * :<C-u>call VisualSelection('', '')<CR>/<C-R>=@/<CR><CR>
