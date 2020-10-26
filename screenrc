@@ -1,6 +1,6 @@
 escape ^Oo
 attrcolor b ".I"
-termcapinfo xterm 'Co#256:AB=\E[48;5;%dm:AF=\E[38;5;%dm'
+termcapinfo xterm* 'Co#256:AB=\E[48;5;%dm:AF=\E[38;5;%dm:is=\E[r\E[m\E[2J\E[H\E[?7h\E[?1;4;6l'
 
 encoding GBK UTF-8
 vbell on
@@ -36,9 +36,10 @@ bind ` select 0
 bind 0 select 10
 
 # default windows
-screen -t bash1 0
-screen -t bash2 1
-screen -t bash3 2
+screen -t odp 0
+screen -t odpp 1
+screen -t server 2
+screen -t bash 3
 select 0
 
 hardstatus alwayslastline '%{gk}%-w%{.gk}%n %t%{-}%+Lw %=%{kG}%m-%d %c'
