@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 export PATH=/bin:/sbin:/usr/bin:/usr/sbin:/usr/local/bin:/usr/local/sbin:$PATH
-export PATH=$(echo -e ${PATH//:/\\n}|sort -u|sed ":a;N;s/\n/:/g;ta")
+export PATH=$(path|sed ":a;N;s/\n/:/g;ta")
 
 # Make vim the default editor.
 export EDITOR='vim';

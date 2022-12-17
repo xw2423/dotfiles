@@ -49,7 +49,7 @@ alias ifactive="ifconfig | pcregrep -M -o '^[^\t:]+:([^\n]|\n\t)*status: active'
 alias reload="exec ${SHELL} -l"
 
 # Print each PATH entry on a separate line
-alias path='echo -e ${PATH//:/\\n}'
+alias path='echo -e ${PATH//:/\\n} | awk '"'"'BEGIN{i=0}{if(!($0 in s)){s[$0]++;m[i]=$0;i++}}END{for(i=0;i<length(m);i++){print m[i]}}'"'"
 
 alias less='less -r'
 alias vi='vim';
