@@ -252,3 +252,4 @@ nnoremap <leader>gr :GoRun<CR>
 nnoremap <leader>gs :GoReferrers<CR>
 nnoremap <leader>ge :GoCallees<CR>
 nnoremap <leader>gc :GoCallers<CR>
+nnoremap <leader>gi :GoImplements<CR>
