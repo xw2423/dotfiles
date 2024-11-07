@@ -58,6 +58,20 @@ fi
 #for i in $HOME/.vim $HOME/.vimrc; do [ -L $i ] && unlink $i ; done
 #success "Successfully backed up your vim configuration"
 
+# install vim-plug
+if [ ! -e $PRO_PATH/autoload/plug.vim ]; then
+    info "Installing Vim-Plug"
+    curl -fLo "$PRO_PATH/autoload/plug.vim" --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+    success "Successfully installed vim-plug"
+fi
+
+if [[ $OS =~ "Windows" ]]; then
+    if [ ! -e $HOME/.vim ] ; then
+        info "run install_windows_link.bat as admin && copy autoload/plug.vim to gvim"
+        exit
+    fi
+fi
+
 info "setting up symlinks"
 lnif $PRO_PATH/ $HOME/.vim
 for i in $SYMLINKS
@@ -70,12 +84,6 @@ fi
 success "Successfully created symbol links"
 
 [ ! -z $1 ] && exit
-# install vim-plug
-if [ ! -e $PRO_PATH/autoload/plug.vim ]; then
-    info "Installing Vim-Plug"
-    curl -fLo "$PRO_PATH/autoload/plug.vim" --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
-    success "Successfully installed vim-plug"
-fi
 
 info "update/install plugins using vim-plug"
 system_shell=$SHELL

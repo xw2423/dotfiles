@@ -246,6 +246,7 @@ let g:syntastic_javascript_checkers = ['eslint']
 let g:go_version_warning = 0
 let g:go_imports_autosave = 1
 let g:go_auto_type_info = 1
+let g:go_bin_path = $GOPATH.'/bin'
 " let g:go_auto_sameids = 1
 au FileType go set nolist
 nnoremap <leader>gr :GoRun<CR>

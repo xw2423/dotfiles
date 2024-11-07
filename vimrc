@@ -3,12 +3,7 @@ let g:mapleader = ','
 let g:isgvim = has('win32') && has('gui_win32') && has('gui_running')
 
 " vim root
-if g:isgvim
-    let $VIMROOT=$HOME.'/_dotfiles'
-    source $VIMROOT/autoload/plug.vim
-else
-    let $VIMROOT=$HOME.'/.dotfiles'
-endif
+let $VIMROOT=$HOME.'/.dotfiles'
 
 "load plugins
 if filereadable($VIMROOT.'/vimrc.plug')

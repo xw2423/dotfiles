@@ -69,3 +69,5 @@
     untracked = cyan
 
 # vim: ft=gitconfig
+[credential "helperselector"]
+	selected = manager-core
